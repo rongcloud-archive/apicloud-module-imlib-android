@@ -1,0 +1,709 @@
+<!doctype html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=0">
+<title>APICloud</title>
+<link rel="stylesheet" type="text/css" href="../css/base.css" />
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+<script type="text/javascript">
+        var rong = null;
+        apiready = function() {
+            rong = api.require('rongCloud');
+        }
+
+
+
+        function init() {
+            var param = {
+                appKey: "z3v5yqkbv8v30"
+            };
+
+            var resultCallback = function(ret, err) {
+                if(ret.status == 'error'){
+                    alert(JSON.stringify(err));
+                }else{
+                    alert(JSON.stringify(ret));
+                }
+            };
+
+
+            rong.init(param, resultCallback);
+        }
+
+        function connect() {
+            var param = {
+                token: "iuuobOgnGRm5NtjMmNJ2ybI6ZiT8q7s0UEaMPWY0lMwSF1km2wUxJN8AbfBma46M3UxJODM2vBh94DvkFpmc5g=="
+            };
+            var resultCallback = function(ret, err) {
+                if(ret.status == 'error'){
+                    alert(JSON.stringify(err));
+                }else{
+                    alert(JSON.stringify(ret));
+                }
+            };
+
+            rong.connect(param, resultCallback);
+        }
+
+        function reconnect() {
+            var resultCallback = function(ret, err) {
+                if(ret.status == 'error'){
+                    alert(JSON.stringify(err));
+                }else{
+                    alert(JSON.stringify(ret));
+                }
+            };
+
+            rong.reconnect({}, resultCallback);
+        }
+
+        function disconnect() {
+            var param = {
+                isReceivePush: false
+            };
+
+            var resultCallback = function(ret, err) {
+                if(ret.status == 'error'){
+                    alert(JSON.stringify(err));
+                }else{
+                    alert(JSON.stringify(ret));
+                }
+            };
+
+
+            rong.disconnect(param, resultCallback);
+        }
+
+        function getConversation() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16"
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.getConversation(param, resultCallback);
+        }
+
+        function getConversationList() {
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.getConversationList({}, resultCallback);
+        }
+
+        function removeConversation() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16"
+            };
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.removeConversation(param, resultCallback);
+        }
+
+        function setConversationToTop() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16",
+                isTop: true
+            };
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.setConversationToTop(param, resultCallback);
+        }
+
+        function getTotalUnreadCount() {
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.getTotalUnreadCount({}, resultCallback);
+        }
+
+        function getUnreadCount() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16"
+            };
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.getUnreadCount(param, resultCallback);
+        }
+
+        function getUnreadCountByConversationTypes() {
+            var param = {
+                conversationTypes: ["PRIVATE", "GROUP", "DISCUSSION"]
+            };
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.getUnreadCountByConversationTypes(param, resultCallback);
+        }
+
+        function getLatestMessages() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "6812",
+                count: 2
+            };
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.getLatestMessages(param, resultCallback);
+        }
+
+        function getHistoryMessages() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "6812",
+                count: 2,
+            };
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.getHistoryMessages(param, resultCallback);
+        }
+
+        function getHistoryMessagesByObjectName() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "6812",
+                count: 2,
+                objectName: "RC:ImgMsg",
+                oldestMessageId: 10
+            };
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.getHistoryMessagesByObjectName(param, resultCallback);
+        }
+
+        function deleteMessages() {
+            var param = {
+                messageIds: [1, 2, 3]
+            };
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.deleteMessages(param, resultCallback);
+        }
+
+        function clearMessages() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16"
+            }
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.clearMessages(param, resultCallback);
+        }
+
+        function clearMessagesUnreadStatus() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16"
+            }
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.clearMessagesUnreadStatus(param, resultCallback);
+        }
+
+        function setMessageExtra() {
+            var param = {
+                messageId: 1,
+                value: "test"
+            }
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.setMessageExtra(param, resultCallback);
+        }
+
+        // READ = 1; LISTENED = 2; DOWNLOADED = 4;
+        function setMessageReceivedStatus() {
+            var param = {
+                messageId: 1,
+                receivedStatus: 1 + 2 + 4
+            }
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.setMessageReceivedStatus(param, resultCallback);
+        }
+
+
+        function getTextMessageDraft() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16"
+            }
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.getTextMessageDraft(param, resultCallback);
+        }
+
+
+        function saveTextMessageDraft() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16",
+                content: "test_draft"
+            }
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.saveTextMessageDraft(param, resultCallback);
+        }
+
+        function clearTextMessageDraft() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16"
+            }
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.clearTextMessageDraft(param, resultCallback);
+        }
+
+        function createDiscussion() {
+            var param = {
+                name: "discussion",
+                userIdList: ["16", "55", "66"]
+            }
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.createDiscussion(param, resultCallback);
+        }
+
+        function getDiscussion() {
+            var param = {
+                discussionId: "1b9f7abe-a5ae-463d-8ff8-d96deaf40b59"
+            }
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.getDiscussion(param, resultCallback);
+        }
+
+        function setDiscussionName() {
+            var param = {
+                discussionId: "1b9f7abe-a5ae-463d-8ff8-d96deaf40b59",
+                name: "test_discussion_name"
+            }
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.setDiscussionName(param, resultCallback);
+        }
+
+        function addMemberToDiscussion() {
+            var param = {
+                discussionId: "1b9f7abe-a5ae-463d-8ff8-d96deaf40b59",
+                userIdList: ["26", "65", "76"]
+            }
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.addMemberToDiscussion(param, resultCallback);
+        }
+
+        function removeMemberFromDiscussion() {
+            var param = {
+                discussionId: "1b9f7abe-a5ae-463d-8ff8-d96deaf40b59",
+                userId: "26"
+            }
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.removeMemberFromDiscussion(param, resultCallback);
+        }
+
+        function quitDiscussion() {
+            var param = {
+                discussionId: "1b9f7abe-a5ae-463d-8ff8-d96deaf40b59"
+            }
+
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.quitDiscussion(param, resultCallback);
+        }
+
+
+        function sendTextMessage() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "6812",
+                text: "call this cloud"
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.sendTextMessage(param, resultCallback);
+        }
+
+        function sendImageMessage() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16",
+                imagePath: "widget://Bart_Simpson.png"
+            };
+            var resultCallback = function(ret, err) {
+                alert(api.wgtRootDir);
+                alert(JSON.stringify(ret));
+            }
+
+            rong.sendImageMessage(param, resultCallback);
+        }
+
+        function sendVoiceMessage() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16",
+                voicePath: "/sdcard/DCIM/Camera/IMG_20141120_050735.jpg",
+                duration: "3"
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.sendVoiceMessage(param, resultCallback);
+        }
+
+        function sendRichContentMessage() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16",
+                title: "rich_title",
+                description: "rich_content",
+                imageUrl: "http://rongcloud.cn/images/logo.png"
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.sendRichContentMessage(param, resultCallback);
+        }
+
+        function sendLocationMessage() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16",
+                latitude: 39.8802147,
+                longitude: 116.415794,
+                poi: "location_poi_info",
+                imagePath: "/sdcard/DCIM/Camera/IMG_20141120_050735.jpg"
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.sendLocationMessage(param, resultCallback);
+        }
+
+        function sendCommandNotificationMessage() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16",
+                name: "commont_name",
+                data: "commont_data"
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.sendCommandNotificationMessage(param, resultCallback);
+        }
+
+        function getConversationNotificationStatus() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16"
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.getConversationNotificationStatus(param, resultCallback);
+        }
+
+        //DO_NOT_DISTURB, NOTIFY;
+        function setConversationNotificationStatus() {
+            var param = {
+                conversationType: "PRIVATE",
+                targetId: "16",
+                notificationStatus: "DO_NOT_DISTURB"
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.setConversationNotificationStatus(param, resultCallback);
+        }
+
+        //CLOSED, OPENED;
+        function setDiscussionInviteStatus() {
+            var param = {
+                discussionId: "ac62578f-601b-49aa-99cb-9e90dac84fde",
+                inviteStatus: "CLOSED"
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.setDiscussionInviteStatus(param, resultCallback);
+        }
+
+
+        function syncGroup() {
+            var param = {
+                groups: [{
+                    groupId: "groupId1",
+                    groupName: "groupName1"
+                }, {
+                    groupId: "groupId2",
+                    groupName: "groupName2"
+                }]
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.syncGroup(param, resultCallback);
+        }
+
+
+        function joinGroup() {
+            var param = {
+                groupId: "group_id",
+                groupName: "group_name"
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.joinGroup(param, resultCallback);
+        }
+
+        function quitGroup() {
+            var param = {
+                groupId: "group_id"
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.quitGroup(param, resultCallback);
+        }
+
+
+        function joinChatRoom() {
+            var param = {
+                chatRoomId: "chatroom",
+                defMessageCount: "10"
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.joinChatRoom(param, resultCallback);
+        }
+
+        function quitChatRoom() {
+            var param = {
+                chatRoomId: "chatroom"
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.quitChatRoom(param, resultCallback);
+        }
+
+        function clearConversations() {
+            var param = {
+                conversationTypes: ["PRIVATE", "GROUP", "DISCUSSION"]
+            };
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.clearConversations(param, resultCallback);
+        }
+
+        function setOnReceiveMessageListener() {
+            var resultCallback = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.setOnReceiveMessageListener({}, resultCallback);
+        }
+
+        function setConnectionStatusListener() {
+            var listener = function(ret, err) {
+                alert(JSON.stringify(ret));
+            }
+
+            rong.setConnectionStatusListener({}, listener);
+        }
+
+    </script>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="main">
+        <div>
+            <input type="button" onclick="init()" value="init" />
+            <br>
+            <input type="button" onclick="connect()" value="connect" />
+            <br>
+            <input type="button" onclick="reconnect()" value="reconnect" />
+            <br>
+            <input type="button" onclick="disconnect()" value="disconnect" />
+            <br>
+            <input type="button" onclick="setOnReceiveMessageListener()" value="setOnReceiveMessageListener" />
+            <br>
+            <input type="button" onclick="setConnectionStatusListener()" value="setConnectionStatusListener" />
+            <br>
+            <input type="button" onclick="getConversationList()" value="getConversationList" />
+            <br>
+            <input type="button" onclick="getConversation()" value="getConversation" />
+            <br>
+            <input type="button" onclick="removeConversation()" value="removeConversation" />
+            <br>
+            <input type="button" onclick="setConversationToTop()" value="setConversationToTop" />
+            <br>
+            <input type="button" onclick="getTotalUnreadCount()" value="getTotalUnreadCount" />
+            <br>
+            <input type="button" onclick="getUnreadCount()" value="getUnreadCount" />
+            <br>
+            <input type="button" onclick="getUnreadCountByConversationTypes()" value="getUnreadCountByConversationTypes" />
+            <br>
+            <input type="button" onclick="getLatestMessages()" value="getLatestMessages" />
+            <br>
+            <input type="button" onclick="getHistoryMessages()" value="getHistoryMessages" />
+            <br>
+            <input type="button" onclick="getHistoryMessagesByObjectName()" value="getHistoryMessagesByObjectName" />
+            <br>
+            <input type="button" onclick="deleteMessages()" value="deleteMessages" />
+            <br>
+            <input type="button" onclick="clearMessages()" value="clearMessages" />
+            <br>
+            <input type="button" onclick="clearMessagesUnreadStatus()" value="clearMessagesUnreadStatus" />
+            <br>
+            <input type="button" onclick="setMessageExtra()" value="setMessageExtra" />
+            <br>
+            <input type="button" onclick="setMessageReceivedStatus()" value="setMessageReceivedStatus" />
+            <br>
+            <input type="button" onclick="getTextMessageDraft()" value="getTextMessageDraft" />
+            <br>
+            <input type="button" onclick="saveTextMessageDraft()" value="saveTextMessageDraft" />
+            <br>
+            <input type="button" onclick="clearTextMessageDraft()" value="clearTextMessageDraft" />
+            <br>
+            <input type="button" onclick="createDiscussion()" value="createDiscussion" />
+            <br>
+            <input type="button" onclick="getDiscussion()" value="getDiscussion" />
+            <br>
+            <input type="button" onclick="setDiscussionName()" value="setDiscussionName" />
+            <br>
+            <input type="button" onclick="addMemberToDiscussion()" value="addMemberToDiscussion" />
+            <br>
+            <input type="button" onclick="removeMemberFromDiscussion()" value="removeMemberFromDiscussion" />
+            <br>
+            <input type="button" onclick="quitDiscussion()" value="quitDiscussion" />
+            <br>
+            <input type="button" onclick="sendTextMessage()" value="sendTextMessage" />
+            <br>
+            <input type="button" onclick="sendImageMessage()" value="sendImageMessage" />
+            <br>
+            <input type="button" onclick="sendVoiceMessage()" value="sendVoiceMessage" />
+            <br>
+            <input type="button" onclick="sendRichContentMessage()" value="sendRichContentMessage" />
+            <br>
+            <input type="button" onclick="sendLocationMessage()" value="sendLocationMessage" />
+            <br>
+            <input type="button" onclick="sendCommandNotificationMessage()" value="sendCommandNotificationMessage" />
+            <br>
+            <input type="button" onclick="getConversationNotificationStatus()" value="getConversationNotificationStatus" />
+            <br>
+            <input type="button" onclick="setConversationNotificationStatus()" value="setConversationNotificationStatus" />
+            <br>
+            <input type="button" onclick="setDiscussionInviteStatus()" value="setDiscussionInviteStatus" />
+            <br>
+            <input type="button" onclick="syncGroup()" value="syncGroup" />
+            <br>
+            <input type="button" onclick="joinGroup()" value="joinGroup" />
+            <br>
+            <input type="button" onclick="quitGroup()" value="quitGroup" />
+            <br>
+            <input type="button" onclick="joinChatRoom()" value="joinChatRoom" />
+            <br>
+            <input type="button" onclick="quitChatRoom()" value="quitChatRoom" />
+            <br>
+            <input type="button" onclick="clearConversations()" value="clearConversations" />
+            <br>
+        </div>
+
+    </div>
+</div>
+</body>
+
+</html>

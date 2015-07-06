@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.1.0"
+
+    defaultConfig {
+        applicationId "io.rong.apicloud"
+        minSdkVersion 10
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            aidl.srcDirs = ['src/main/java']
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            resources.srcDirs = ['src/main/java']
+            aidl.srcDirs = ['src/main/java']
+            renderscript.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+            jniLibs.srcDirs = ['libs','src/main/jni']
+        }
+
+        androidTest.setRoot('src/androidTest')
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.code.gson:gson:2.2.+'
+    compile 'com.android.support:support-v4:21.0.3'
+    compile ('io.rong:lib:0.1.1@aar'){
+        exclude group: 'com.sea_monster', module: 'common'
+        exclude group: 'com.sea_monster', module: 'cache'
+        exclude group: 'com.sea_monster', module: 'network'
+        exclude group: 'com.sea_monster', module: 'common'
+        exclude group: 'com.sea_monster', module: 'resource'
+        exclude group: 'com.sea_monster', module: 'dao_core'
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+
+    compile 'com.sea_monster:common:0.1.0'
+
+    compile ('com.sea_monster:cache:0.1.0'){
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+
+    compile ('com.sea_monster:network:0.1.0'){
+        exclude group: 'com.sea_monster', module: 'common'
+    }
+
+    compile ('com.sea_monster:resource:0.1.0'){
+        exclude group: 'com.sea_monster', module: 'network'
+        exclude group: 'com.sea_monster', module: 'cache'
+    }
+    compile 'com.sea_monster:dao_core:0.1.0'
+
+}
