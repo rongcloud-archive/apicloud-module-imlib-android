@@ -75,18 +75,19 @@
 
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
 
-    <application
+
+    <application android:name="com.uzmap.pkg.uzapp.UZApplication"
         android:allowBackup="true"
-        android:name=".RongApplication"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/uz_icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:hardwareAccelerated="true">
+        <meta-data android:name="uz_version" android:value="1.1.0" />
 
         <meta-data
             android:name="RONG_CLOUD_APP_KEY"
             android:value="z3v5yqkbv8v30" />
 
-        <meta-data android:name="uz_version" android:value="1.0.0" />
         <activity
             android:name="com.uzmap.pkg.EntranceActivity"
             android:label="@string/app_name"
@@ -98,7 +99,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
