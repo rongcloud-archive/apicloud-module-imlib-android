@@ -34,9 +34,15 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile ('io.rong:lib:2.2.0@aar')
     compile 'com.google.code.gson:gson:2.2.+'
     compile 'com.android.support:support-v4:21.0.3'
-    compile ('io.rong:lib:2.2.0@aar')
 }
