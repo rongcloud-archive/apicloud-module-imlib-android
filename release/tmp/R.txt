@@ -1,5 +1,0 @@
-int drawable logo 0x7f020000
-int string rc_notification_contact 0x7f030000
-int string rc_notification_msg 0x7f030001
-int string rc_notification_send 0x7f030002
-int string rc_notification_ticker_text 0x7f030003

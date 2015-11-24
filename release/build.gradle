@@ -4,13 +4,15 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
+
 jar {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 
     manifest {
-        attributes 'Implementation-Title':'RongIMSDK', 'Implementation-Version': 1.2
+        attributes 'Implementation-Title':'RongIMSDK', 'Implementation-Version': 2.0
     }
 }
+
 artifacts {
     archives jar
 }

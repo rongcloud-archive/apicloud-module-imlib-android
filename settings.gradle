@@ -1,1 +1,1 @@
-include ':sdk', ':release'
+include ':app', ':apicloud','release'

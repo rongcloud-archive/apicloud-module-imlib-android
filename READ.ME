@@ -1,0 +1,11 @@
+//For apicloud using imlib 2.+
+apicloud 2.0  开源版本发布
+
+该版本基于融云 sdk lib 2.0
+module 基于IDE android studio 开发
+工程根目录下有 script 脚本，执行~/sh script.sh 即可编译并生成apicloud jar
+生成的 module 存于/release/pacakge 目录下，包名是 rongCloud2.
+
+如果用户想要自定义包名，需要按照 apicloud 官方规范进行打包，除此之外
+融云 sdk 需要修改注意的地方是 RongIMClientModule 文件中的init 方法
+把rongCloud2更改成自定义的包名，重新编译。
