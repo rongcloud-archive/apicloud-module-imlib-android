@@ -28,7 +28,7 @@ APICloud 是中国首个“云端一体”的移动应用云服务提供商。AP
 
 [APICloud 模块商店](http://www.apicloud.com/modulestore) - 添加融云模块
 
-[APICloud 融云接入指南](http://docs.apicloud.com/APICloud/%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/rongCloud) - 注册融云帐号
+[APICloud 融云接入指南](http://docs.apicloud.com/Others/Open-SDK-Integration-Guide/rongCloud2) - 注册融云帐号
 
 [APICloud 融云模块开发文档](http://docs.apicloud.com/%E7%AB%AFAPI/%E5%BC%80%E6%94%BESDK/rongCloud) - 融云模块接口文档
 
