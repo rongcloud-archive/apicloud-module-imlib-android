@@ -83,53 +83,56 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
-        <!--  begin imlib request  -->
+        <meta-data android:name="uz_version" android:value="1.0.0" />
+
         <service
             android:name="io.rong.imlib.ipc.RongService"
-            android:process=":ipc" >
-        </service>
+            android:exported="true"
+            android:process=":ipc" />
+
         <service android:name="io.rong.imlib.ReConnectService" />
 
         <receiver android:name="io.rong.imlib.ConnectChangeReceiver" />
-        <receiver android:name="io.rong.imlib.ipc.PushMessageReceiver" >
-            <intent-filter>
-                <action android:name="io.rong.push.message" />
-            </intent-filter>
-        </receiver>
+
         <receiver
             android:name="io.rong.imlib.HeartbeatReceiver"
             android:process=":ipc" />
+        <!-- imlib config end -->
 
+
+        <!--必选： SDK 核心功能-->
+        <!--第三方相关,向第三方推送服务请求 token 的服务 -->
+        <service
+            android:name="io.rong.push.core.PushRegistrationService"
+            android:exported="false">
+        </service>
+
+        <!-- 处理 push 消息相关的服务 -->
+        <service
+            android:name="io.rong.push.core.MessageHandleService"
+            android:exported="true">
+        </service>
+
+        <!-- push服务 -->
         <service
             android:name="io.rong.push.PushService"
-            android:process="io.rong.push" > <!-- Waring: The name of the push process can't be changed!!! -->
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <action android:name="io.rong.push" />
-            </intent-filter>
-        </service>
-        <service
-            android:name="io.rong.push.CommandService"
-            android:exported="true"
-            android:process="io.rong.push" > <!-- Waring: The name of the push process can't be changed!!! -->
-
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <action android:name="io.rong.command" />
-            </intent-filter>
+            android:exported="false"
+            android:process="io.rong.push">  <!-- push进程，可以改名 -->
         </service>
 
+        <!-- push 相关事件接收器 -->
         <receiver
             android:name="io.rong.push.PushReceiver"
-            android:process="io.rong.push" > <!-- Waring: The name of the push process can't be changed!!! -->
+            android:process="io.rong.push">   <!-- 此处进程可以改名，名称需要和PushService所在进程统一 -->
+            <!-- 心跳事件 -->
             <intent-filter>
-                <action android:name="io.rong.push.HeartBeat" />
+                <action android:name="io.rong.push.intent.action.HEART_BEAT" />
             </intent-filter>
+            <!-- 网络变动事件 -->
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
+            <!-- 部分用户事件 -->
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -138,15 +141,11 @@
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
                 <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-
-                <data android:scheme="package" />
-            </intent-filter>
         </receiver>
-        <!--  end  -->
 
-        <meta-data android:name="uz_version" android:value="1.0.0" />
+        <!--必选： SDK 核心功能-->
+
+        <!-- end -->
         <activity
             android:name="com.uzmap.pkg.EntranceActivity"
             android:label="@string/app_name"

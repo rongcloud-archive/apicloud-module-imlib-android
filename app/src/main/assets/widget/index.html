@@ -1,68 +1,77 @@
 <!doctype html>
-<html >
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="view-port" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=0">
-	<title>APICloud</title>
-	<link rel="stylesheet" type="text/css" href="./css/base.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
     <link rel="stylesheet" type="text/css" href="./css/common.css" />
-    <script type="text/javascript" src="./script/rong.js"></script>
-
+    <style>
+        #header {
+            background-color:#2DBD82;
+        }
+        #nav{
+            display:-webkit-box;
+            height:44px;
+        }
+        #left>span {
+            margin-top:13px;
+            margin-left:36px;
+            font-size:18px;
+            height:18px;
+            line-height:18px;
+            color: #fff;
+        }
+        #middle {
+            -webkit-box-flex:1;
+            width:100%;
+            display:-webkit-box;
+            -webkit-box-pack:center;
+            -webkit-box-align:center;
+        }
+        #title {
+            font-size:18px;
+            text-align:center;
+            color:#fff;
+        }
+        section {
+            -webkit-box-flex:1;
+        }
+    </style>
 </head>
 <body>
-    <div id="wrap">
-        <div id="header">
-            <h1>融云 & APICLOUD</h1>
-        </div>
-        <div id="main">
-                
-        </div>
-        <div id="footer">
-            <h5>©2015</h5>
-        </div>
+<div id="wrap">
+    <div id="header">
+        <nav id="nav">
+            <div id="middle">
+                <strong id="title">自定义模块</strong>
+            </div>
+        </nav>
     </div>
-    
+    <div id="main">
+
+    </div>
+
+</div>
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
-
 <script type="text/javascript">
     apiready = function(){
-
         var header = $api.byId('header');
-        var bodyHeight = window.innerHeight;
+        $api.fixIos7Bar(header);
         var offset = $api.offset(header);
-        var footer = $api.byId('footer');
-        var fPos = $api.offset(footer);
+
         api.openFrame({
-            name: 'login',
-            url: './html/login.html',
-            bounces: true,
+            name: 'module-con',
+            url: './html/module-con.html',
+            bounces: false,
             rect: {
-                x: offset.l,
-                y: offset.t + offset.h,
-                w: offset.w,
-                h: bodyHeight - offset.h - fPos.h
+                x: 0,
+                y: offset.h,
+                w: "auto",
+                h: "auto"
             }
         });
-
-        api.addEventListener({
-            name: 'myEvent'
-        }, function(ret){
-            if(ret && ret.value){
-                var value = ret.value;
-                alert('index: ' + value.result + ' , ' + value.error);
-            }
-        });
-
-        var rong = api.require("rongCloud2");
-        var resultCallback = function(ret, err) {
-            api.sendEvent({
-                name: 'message',
-                extra: {result: ret, error: err}
-            });
-        }
-
-
     }
+
 </script>
 </html>

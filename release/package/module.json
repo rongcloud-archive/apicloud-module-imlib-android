@@ -1,4 +1,8 @@
 {
-  "name":"rongCloud2",
-  "class":"io.rong.apicloud.RongIMClientModule"
+  "modules":[
+    {
+      "name":"rongCloud2",
+      "class":"io.rong.plugin.RongIMClientModule"
+    }
+  ]
 }

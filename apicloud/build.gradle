@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion '19.1.0'
+    compileSdkVersion 23
+    buildToolsVersion '23.0.1'
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 19
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
 
@@ -37,3 +37,39 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
+
+
+//生成 jar 名字
+def JAR_NAME = "rongCloud2"
+//生成 jar 路径
+def OUTPUT_PATH = "build/libs/"
+
+//执行 gradle makeJar 后生成发布的 kit.jar
+//执行脚本前，lib 如果有修改，要重新先编译 lib，否则，发布的版本 lib 非最新的。
+task makeJar(type: Jar) {
+
+    from zipTree(file('build/intermediates/bundles/release/classes.jar'))
+    from zipTree(file('../lib/build/intermediates/bundles/release/classes.jar'))
+    from zipTree(file('../push/build/intermediates/bundles/release/classes.jar'))
+    from zipTree(file('../toollib/build/intermediates/bundles/release/classes.jar'))
+
+    //去除编译生成的临时文件
+    exclude('**/BuildConfig.class')
+    exclude('**/BuildConfig\$*.class')
+    exclude('**/R.class')
+    exclude('**/R\$*.class')
+    exclude('**/assets/**')
+    exclude('**/assets/pushresources/**')
+    exclude('**/assets/pushresources')
+    exclude('**/assets')
+    exclude('**/*_version')
+
+    baseName JAR_NAME
+    destinationDir file(OUTPUT_PATH)
+}
+
+task clearJar(type: Delete) {
+    delete OUTPUT_PATH + JAR_NAME + '.jar'
+}
+
+makeJar.dependsOn(clearJar, build)

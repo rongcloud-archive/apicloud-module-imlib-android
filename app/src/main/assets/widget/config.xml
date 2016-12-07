@@ -1,15 +1,16 @@
-<widget id="A6965220651799"  version="0.0.1">
-    <name>RongCloud For ApiCloud</name>
+<widget id="A123456789"  version="0.0.1">
+    <name>App</name>
     <description>
-        a sample RongCloud app.
+        a sample app.
     </description>
     <author email="developer@apicloud.com" href="http://www.apicloud.com">
-        developer
+        APICloud
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <preference name="bounces" value="true" />
-    <feature name="rongCloud2">
-        <param name="appKey" value="z3v5yqkbv8v30" />
+    <feature name="rongCloud20">
+        <!--<param name="appKey" value="kj7swf8o7zky2" />-->
+        <param name="appKey" value="n19jmcy59f1q9" />
+        
     </feature>
 </widget>
