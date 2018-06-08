@@ -1,6 +1,6 @@
 # APICloud 开发文档
 
-为了让更多的开发者能够使用即时通讯云服务，融云将不断增加各种平台的支持。此次 APICould 平台融云即时通讯模块的上线，让广大 Web 前端开发者也可以用 JavaScript + HTML 写出完美的移动应用。
+尊敬的开发者，融云后续不再由官方维护 APICloud Module，因此也无法继续提供相关的技术支持，如果您有相关问题，可以前往 APICloud 社区提问，网址：http://community.apicloud.com。
 
 ## APICloud 简介
 
